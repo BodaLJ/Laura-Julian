@@ -1564,7 +1564,8 @@ opacity: 0;
     Responde antes del 01 de Junio
 </p>
 
-                <form id="rsvp-form" class="space-y-6">
+                 <form id="rsvp-form" action="https://script.google.com/macros/s/AKfycbwYJUkz8Kipx-MJUogJRrEZDFeApFNqSVm8IaHM23jPIu_jjmtwEK304ppirOmSggvE4A/exec" method="POST" class="space-y-6">
+
                     <!-- Invitados de la familia -->
 <div>
     <label class="block text-sm font-sans-subtle font-medium mb-2" style="color: var(--color-midnight);">
@@ -2022,7 +2023,7 @@ document.getElementById('rsvp-form').addEventListener('submit', async function(e
     }
 
     try {
-        await fetch("https://script.google.com/macros/s/AKfycbyDX_CMAnk4r-g10AQS1BrC7XIM_vWq3tsWP2YFS3NonKpI8u8n00-KUieZ-y37V0MDJg/exec", {
+        await fetch("https://script.google.com/macros/s/AKfycbzdADa9zklfIX1P84Lv1urEMb_ZIAfA1aP13Qno0AJpcjvDgQfXF5gRMbKfsnRtPRfx6g/exec", {
     method: "POST",
     headers: {
         "Content-Type": "application/json"
@@ -2245,6 +2246,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </body>
 
 </html>
+
 
 
 
