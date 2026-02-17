@@ -1,0 +1,2247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Boda: 21.06.26</title>
+    <!-- Carga de Tailwind CSS -->
+   <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <!-- Carga de fuentes elegantes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Great+Vibes&family=Inter:wght@300;400;600&family=Cinzel:wght@400;600&family=Allura&display=swap" rel="stylesheet">
+
+
+    <!-- ÍCONOS FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+@font-face {
+    font-family: 'Amsterdam';
+    src: url('Fonts/amsterdam-four.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+        /* Definición de la paleta de colores con variables CSS */
+        :root {
+            --color-midnight: #1D2B40;   /* Azul Marino Oscuro */
+            --color-denim: #7F9AB2;      /* Azul Grisáceo */
+            --color-beige: #F0EFEA;      /* Color hueso cálido / Fondo de papel antiguo */
+            --color-cinnamon: #B18F64;   /* Marrón Camel / Dorado Accent */
+        }
+        /* Estilos generales y tipografía */
+        .font-serif-elegant { font-family: 'Cormorant Garamond', serif; }
+        .font-sans-subtle { font-family: 'Inter', sans-serif; }
+
+        body {
+            background-color: var(--color-beige);
+            color: var(--color-midnight);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-beige);
+}
+
+        
+       /* ===============================
+   SOBRE REALISTA FULLSCREEN
+================================ */
+#splash-gate {
+    position: fixed;
+    inset: 0;
+    background-color: var(--color-midnight);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 1s ease-in-out;
+    height: 100svh;
+}
+
+.fullscreen-envelope {
+    width: 100vw;
+    height: 100svh;
+    object-fit: cover;      /* 🔥 llena toda la pantalla */
+    object-position: center;
+    display: block;
+    cursor: pointer;
+}
+
+ 
+
+        /* Estilo para el texto de invitación */
+        #guest-count {
+    position: absolute;
+    left: 50%;
+    bottom: 22%;
+    transform: translateX(-50%);
+    z-index: 20;
+
+    padding: 14px 26px;
+    border-radius: 16px;
+
+    /* FONDO INVISIBLE DE CONTRASTE */
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.45),
+        rgba(0,0,0,0.25)
+    );
+    backdrop-filter: blur(4px);
+
+    font-size: clamp(1.1rem, 2.8vw, 2rem);
+    letter-spacing: 0.14em;
+    text-align: center;
+
+    color: rgba(177, 143, 100, 0.95);
+    text-shadow:
+        0 2px 4px rgba(0,0,0,0.7),
+        0 0 12px rgba(177,143,100,0.25);
+
+    opacity: 0.95;
+    pointer-events: none;
+}
+
+
+        /* Efecto de papel antiguo/vintage para secciones clave */
+        .vintage-paper-bg {
+            background-color: var(--color-beige);
+            /* Sutil textura de papel */
+            background-image: repeating-linear-gradient(
+                -45deg,
+                rgba(177, 143, 100, 0.05),
+                rgba(177, 143, 100, 0.05) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            border: 1px solid rgba(29, 43, 64, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilo de la imagen de fondo principal */
+       #hero-section {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background-image: url('fotos/inicial.jpg');
+    background-repeat: no-repeat;
+    background-position: 45% center;
+    background-size: cover; /* desktop */
+}
+
+
+        #hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: black;
+    opacity: 0;
+}
+
+.hero-floating {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+}
+
+@media (orientation: landscape) and (max-width: 1024px) {
+    .hero-floating {
+        bottom: 02%;
+    }
+}
+
+/* Micro efecto solo en desktop */
+@media (hover: hover) {
+    #splash-gate:hover .fullscreen-envelope {
+        transform: scale(1.02);
+        filter: brightness(1.05);
+        transition: transform 0.6s ease, filter 0.6s ease;
+    }
+
+}
+
+
+/* TEXTO ESTAMPADO EN ORO */
+.gold-stamp {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    background: linear-gradient(
+        120deg,
+        #6f522f,
+        #c9a86a,
+        #f5e6b8,
+        #c9a86a,
+        #6f522f
+    );
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow:
+    0 1px 1px rgba(0,0,0,0.55),
+    0 3px 8px rgba(0,0,0,0.45),
+    0 0 14px rgba(177,143,100,0.35);
+
+
+    animation: goldShimmer 6s ease infinite;
+}
+
+
+@keyframes goldShimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+@media (max-width: 768px) {
+    #guest-count {
+        bottom: 10%;
+        font-size: 1.05rem;
+        letter-spacing: 0.12em;
+        padding: 12px 22px;
+    }
+}
+.hero-names {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+ 
+    z-index: 3;
+
+    font-family: 'Amsterdam', cursive;
+    color: white;
+    text-align: center;
+    line-height: 1;
+}
+
+.hero-names .name-top {
+    display: block;
+    font-size: clamp(3.7rem, 6.7vw, 5.2rem);
+    letter-spacing: 2px;
+ position: relative;
+   transform: translateX(-145px) translateY(-20px);
+
+}
+
+.hero-names .amp {
+    display: block;
+    font-size: clamp(1.2rem, 3.4vw, 1.9rem);
+    margin: 5px 0;
+ position: relative;
+   transform: translateX(-80px) translateY(-5px);
+
+}
+
+.hero-names .name-bottom {
+    display: block;
+    font-size: clamp(2.7rem, 4.7vw, 3.9rem);
+    letter-spacing: 2px;
+    position: relative;
+    transform: translateX(5px) translateY(-40px);
+}
+
+
+
+/* ===============================
+   LIGHTBOX COLLAGE
+================================ */
+#lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4000;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+#lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#lightbox-img {
+    max-width: 92vw;
+    max-height: 92vh;
+    border-radius: 18px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+}
+
+.collage-img {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.collage-img:hover {
+    transform: scale(1.03);
+}
+
+#collage-section {
+    background-color: #F2EBD9;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+
+#collage-section > * {
+    position: relative;
+    z-index: 1;
+}
+/* Imágenes decorativas NO clickeables */
+.no-click {
+    pointer-events: none;
+    cursor: default;
+}
+
+@media (max-width: 768px) {
+    #hero-section {
+        background-size: cover;
+        background-position: 51% center;
+        background-color: #000;
+    }
+}
+/* ===============================
+   AJUSTES DESKTOP SOBRE + TEXTO
+================================ */
+@media (min-width: 1800px) {
+
+    /* Imagen del sobre menos ampliada */
+    .fullscreen-envelope {
+        object-fit: contain;   /* 👈 clave */
+        max-height: 98vh;
+    }
+
+    /* Texto más arriba */
+    #guest-count {
+        bottom: auto;
+        top: 14%;
+        font-size: 1.6rem;
+        letter-spacing: 0.16em;
+    }
+}
+/* ===============================
+   MINI MAPA ELEGANTE
+================================ */
+.mini-map-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto 5px;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.2);
+}
+
+.mini-map-wrapper iframe {
+    width: 100%;
+    height: 240px;
+    border: none;
+    filter: saturate(1.2) contrast(1.05) brightness(1);
+}
+
+.map-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+        rgba(29,43,64,0.15),
+        rgba(29,43,64,0.45)
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.map-overlay span {
+    background: rgba(177,143,100,0.92);
+    color: var(--color-midnight);
+    padding: 10px 26px;
+    border-radius: 30px;
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0.16em;
+    font-size: 0.75rem;
+}
+
+.mini-map-wrapper:hover .map-overlay {
+    opacity: 1;
+}
+
+/* Ajuste móvil */
+@media (max-width: 640px) {
+    .mini-map-wrapper iframe {
+        height: 200px;
+    }
+}
+/* ===============================
+   MAPA + FECHA / HORA
+================================ */
+
+.location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 96px;
+    align-items: center;
+}
+
+.date-time-box {
+    text-align: center;
+}
+
+.event-day {
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    font-size: 1rem;
+    margin-bottom: 12px;
+    color: var(--color-midnight);
+}
+
+.event-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem;
+    font-weight: 500;
+    margin-bottom: 22px;
+    color: var(--color-midnight);
+}
+
+.divider {
+    width: 70px;
+    height: 1px;
+    background-color: var(--color-cinnamon);
+    margin: 0 auto 22px;
+}
+
+.event-time {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.22em;
+    color: var(--color-cinnamon);
+}
+
+/* MÓVIL */
+@media (max-width: 900px) {
+    .location-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+}
+/* ===============================
+   RECUADRO ELEGANTE FECHA Y HORA
+================================ */
+
+.date-time-box {
+    max-width: 420px;
+    margin: 0 auto;
+
+    background-color: var(--color-beige);
+    border-radius: 28px;
+    padding: 42px 36px;
+    text-align: center;
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,0.25),
+        inset 0 0 0 1px rgba(29,43,64,0.08);
+}
+
+/* Ajuste tipográfico fino */
+
+/* DIA */
+.event-day {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(1.8rem, 4vw, 2.2rem);
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    line-height: 1;
+    color: #1D2B40; /* azul oscuro para contraste */
+    margin-bottom: 6px;
+}
+
+/* FECHA */
+.event-date {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2.6rem, 5vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1;
+    color: #1D2B40;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+/* HORA */
+.event-time {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(1.6rem, 3.5vw, 2rem);
+    font-weight: 400;
+    line-height: 1;
+    color: #B18F64; /* dorado elegante */
+    text-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    margin-top: 10px;
+}
+
+
+
+
+/* Mobile ordenado */
+@media (max-width: 900px) {
+    .date-time-box {
+        padding: 36px 28px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .location-grid {
+        gap: 80px;
+    }
+}
+
+/* ===============================
+   ORDEN FECHA → MAPA (RESPONSIVE)
+================================ */
+
+/* Desktop (normal) */
+.location-grid > div {
+    order: 0;
+}
+
+/* Móvil: fecha primero, mapa después */
+@media (max-width: 900px) {
+    .location-grid > div:first-child {
+        order: 2; /* MAPA abajo */
+    }
+
+    .location-grid > div:last-child {
+        order: 1; /* FECHA arriba */
+    }
+}
+
+
+@media (min-width: 1024px) {
+    .date-time-box {
+        margin-top: -16px;
+    }
+}
+@keyframes fadeUpSoft {
+    0% {
+        opacity: 0;
+        transform: translateY(24px) scale(0.97);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+}
+
+.animate-on-scroll.visible {
+    animation: fadeUpSoft 1.1s ease-out forwards;
+}
+/* ===============================
+   BOTONES MAPS / WAZE ELEGANTES
+================================ */
+
+.map-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+    margin-top: 36px;
+}
+
+.map-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 22px;          /* 👈 más pequeños */
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+
+    border-radius: 999px;
+    font-family: 'Cormorant Garamond', serif;
+    text-transform: uppercase;
+
+    transition: all 0.3s ease;
+}
+
+/* Google Maps */
+.map-btn.maps {
+    background-color: var(--color-cinnamon);
+    color: var(--color-midnight);
+    border: none;
+}
+
+@media (max-width: 640px) {
+    .event-date {
+        font-size: 2.5rem;
+        letter-spacing: 0.05em;
+    }
+}
+/* Texto claro dentro de sección azul */
+section[style*="var(--color-midnight)"] h2,
+section[style*="var(--color-midnight)"] p:not(.event-day):not(.event-date):not(.event-time) {
+    color: var(--color-beige);
+}
+/* ===============================
+   BORDE DORADO ELEGANTE FECHA
+================================ */
+
+.date-time-box {
+    position: relative;
+    background-color: var(--color-beige);
+    border-radius: 28px;
+
+    /* Borde dorado fino */
+    border: 1.5px solid rgba(177, 143, 100, 0.75);
+
+    /* Sombra elegante */
+    box-shadow:
+        0 20px 45px rgba(0,0,0,0.25),
+        inset 0 0 0 1px rgba(245,230,184,0.6);
+}
+/* ===============================
+   REDUCIR BOTONES MAPS / WAZE
+   SIN ROMPER ESTRUCTURA
+================================ */
+
+/* Apunta SOLO a los botones dentro de map-buttons */
+.map-buttons a {
+    padding: 8px 20px !important;   /* antes py-3 px-10 */
+    font-size: 0.75rem !important;
+    letter-spacing: 0.14em;
+    border-radius: 999px;
+}
+
+/* Hover suave, sin mover layout */
+.map-buttons a:hover {
+    transform: scale(1.02);
+}
+
+/* Ajuste móvil aún más fino */
+@media (max-width: 640px) {
+    .map-buttons a {
+        padding: 7px 18px !important;
+        font-size: 0.7rem !important;
+    }
+}
+/* ===============================
+   ACERCAR BOTONES AL MAPA
+================================ */
+
+/* Reduce espacio arriba de los botones */
+.map-buttons {
+    margin-top: 0.25rem !important;
+}
+
+/* Por si el iframe del mapa deja margen */
+.location-map iframe {
+    margin-bottom: 0.25rem;
+}
+
+/* Ajuste extra en móvil */
+@media (max-width: 640px) {
+    .map-buttons {
+        margin-top: 0.5rem !important;
+    }
+}
+
+#collage-container {
+  margin-top: 0;
+  padding: 40px 0;
+  line-height: 0;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 1s ease-out forwards;
+}
+/* TÍTULOS */
+.elegant-title {
+  font-family: 'Allura', cursive;
+  font-size: 2.8rem;
+  letter-spacing: 0.04em;
+}
+
+.formal-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.96rem;
+  letter-spacing: 0.3em;
+  opacity: 0.85;
+}
+
+/* TARJETAS */
+.sketch-card {
+  font-family: 'Cormorant Garamond', serif;
+  background: #f3efe6;
+  padding: 1.5rem 1.5rem 1.2rem;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* CONTENEDOR */
+.slideshow-container {
+  width: 180px;
+  height: 220px;
+  position: relative;   /* ✅ CLAVE */
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+
+/* SLIDES */
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+/* IMÁGENES */
+.slideshow-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+
+
+/* TEXTO DEBAJO */
+.fashion-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #1e2537;
+  text-align: center;
+  line-height: 1.4;
+
+  /* 👇 CLAVE */
+  min-height: 2.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* COLORES */
+.color-circles-overlap {
+  position: relative;
+  width: 50px;
+  height: 24px;
+}
+
+.circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+}
+
+.circle-white {
+  background: #ffffff;
+  left: -15px;
+}
+
+.circle-offwhite {
+  background: #f6f5f2;
+  left: 10px;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+@media (max-width: 640px) {
+  .sketch-card {
+    width: 150px;
+    padding: 1rem 0.9rem 0.9rem;
+  }
+
+  .slideshow-container {
+    width: 120px;
+    height: 160px;   /* ✅ ahora sí */
+    pointer-events: none;
+  }
+
+  .fashion-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.22em;
+    min-height: 2.4em;
+  }
+}
+.circle-image {
+ position: relative;
+  top: -6px;
+  left: 40px;
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  
+}
+
+/* Ajuste móvil */
+@media (max-width: 640px) {
+  .circle-image {
+    width: 140px;
+    height: 140px;
+  }
+}
+@media (orientation: landscape) and (max-width: 1024px) {
+    .hero-top-safe {
+        top: calc(env(safe-area-inset-top) + 90px);
+    }
+}
+.lugar-elegante {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-align: center;
+
+    color: var(--color-cinnamon);
+    opacity: 0.9;
+
+    margin-bottom: 14px;
+}
+.lugar-elegante::after {
+    content: "";
+    display: block;
+    width: 42px;
+    height: 1px;
+    background-color: rgba(177,143,100,0.6);
+    margin: 10px auto 0;
+}
+@media (max-width: 640px) {
+    .lugar-elegante {
+        font-size: 0.78rem;
+        margin-bottom: 12px;
+    }
+}
+/* BOTÓN WHATSAPP */
+#wa-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    font-family: 'Inter', sans-serif;
+opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#wa-container.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+#wa-button {
+    background-color:  var(--color-beige); /* verde oficial de WhatsApp */
+    color: var(--color-midnight);
+    border: none;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+#wa-button:hover {
+    transform: scale(1.08);
+}
+
+#wa-menu {
+    position: absolute;
+    bottom: 58px;
+    right: 0;
+    background: var(--color-beige);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    overflow: hidden;
+    display: none;
+    min-width: 170px;
+}
+
+#wa-menu a {
+    display: block;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: var(--color-midnight);
+    font-size: 14px;
+}
+
+#wa-menu a:hover {
+    background: var(--color-denim);
+    color: white;
+}
+#wa-container {
+    animation: floatButton 4s ease-in-out infinite;
+}
+
+@keyframes floatButton {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-6px); }
+    100% { transform: translateY(0); }
+}
+
+
+/* ===============================
+   POSICIÓN EDITORIAL SOLO DESKTOP
+   (NO AFECTA MÓVIL)
+================================ */
+@media (min-width: 1024px) {
+
+    .hero-names {
+        position: absolute;
+        inset: 0;
+        transform: none;
+        width: 100%;
+        height: 100%;
+    }
+
+    .hero-names span {
+        position: absolute;
+    }
+
+    /* Laura — arriba derecha */
+    .hero-names .name-top {
+        top: 20%;
+        right: 28%;
+        transform: none;
+        font-size: clamp(4.5rem, 5.5vw, 6.5rem);
+    }
+
+    /* & — pequeño entre los rostros */
+    .hero-names .amp {
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: clamp(1.9rem, 2.3vw, 2.7rem);
+    }
+
+    /* Julián — abajo izquierda */
+    .hero-names .name-bottom {
+        bottom: -55%;
+        left: 30%;
+        transform: none;
+        font-size: clamp(4rem, 5vw, 6rem);
+    }
+}
+.footer-final {
+    padding: 40px 20px 35px;
+}
+
+.footer-content {
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.envelope-minimal {
+    width: 32px;
+    height: auto;
+    margin: 0 auto 8px;
+    color: var(--color-midnight);
+    opacity: 0.6;
+}
+
+.lluvia-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.4rem;
+    color: var(--color-midnight);
+    margin-bottom: 8px;
+    opacity: 0.9;
+}
+
+.footer-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--color-midnight);
+    opacity: 0.8;
+}
+
+/* SOBRE DORADO */
+.mini-envelope {
+    width: 34px;
+    height: 22px;
+    background: var(--color-cinnamon);
+    position: relative;
+    margin: 0 auto 8px;
+    opacity: 0.85;
+}
+
+.mini-envelope .flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-left: 17px solid transparent;
+    border-right: 17px solid transparent;
+    border-top: 12px solid var(--color-beige);
+}
+
+.mini-envelope .seal {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 7px;
+    height: 7px;
+    background: var(--color-beige);
+    border-radius: 50%;
+}
+.cursive {
+    font-family: 'Great Vibes', cursive;
+}
+
+.cinzel {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+/* ===============================
+   MAGIC COLLAGE SWAP
+================================ */
+
+.collage-magic {
+    padding: 70px 20px 60px;
+    
+    background-image: url("Fotos/Fondoc.jpeg");
+    background-size: cover;
+    background-position: 43% 50%;
+    background-repeat: no-repeat;
+    
+    position: relative;
+    overflow: hidden;
+}
+
+/* Capa suave encima del fondo */
+.collage-magic::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 09, 37, 0.25);
+    backdrop-filter: blur(1px);
+}
+
+/* Para que las fotos queden encima del fondo */
+.magic-grid {
+    position: relative;
+    z-index: 1;
+}
+
+
+.magic-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.magic-card {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border-radius: 16px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.7s ease;
+}
+
+.magic-card img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    backface-visibility: hidden;
+    transition: opacity 0.6s ease;
+}
+/* TARJETA 1 */
+.magic-card:nth-child(1) img {
+    object-position: center 35%;
+}
+
+/* TARJETA 2 */
+.magic-card:nth-child(2) img {
+    object-position: center 25%;
+}
+
+/* TARJETA 3 */
+.magic-card:nth-child(3) img {
+    object-position: 50% 50%;
+}
+
+/* TARJETA 4 */
+.magic-card:nth-child(4) img {
+    object-position: center 30%;
+}
+
+/* TARJETA 5 */
+.magic-card:nth-child(5) img {
+    object-position: center 40%;
+}
+
+/* TARJETA 6 */
+.magic-card:nth-child(6) img {
+    object-position: center 28%;
+}
+
+/* Imagen trasera oculta */
+.img-back {
+    opacity: 0;
+}
+
+/* Estado activo (imagen ampliada visible) */
+.magic-card.active .img-back {
+    opacity: 1;
+}
+
+.magic-card.active .img-front {
+    opacity: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .magic-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    .collage-magic {
+        padding: 60px 20px 50px;
+    }
+}
+
+
+/* LIGHTBOX */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(13, 12, 11, 0.95);
+    backdrop-filter: blur(16px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 18px;
+    transform: scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lightbox.active img {
+    transform: scale(1);
+}
+
+/* EFECTO FLOTANTE SUTIL */
+.magic-card {
+    animation: floatSoft 6s ease-in-out infinite;
+}
+
+.magic-card:nth-child(2),
+.magic-card:nth-child(5) {
+    animation-duration: 7s;
+}
+
+.magic-card:nth-child(3),
+.magic-card:nth-child(6) {
+    animation-duration: 5.5s;
+}
+
+@keyframes floatSoft {
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+.video-on-scroll {
+    opacity: 0;
+    transform: scale(0.96);
+    transition: all 1s ease;
+}
+
+.video-on-scroll.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+.click-text {
+    position: absolute;
+    bottom: 14%;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+
+    color: var(--color-cinnamon); /* dorado elegante */
+    text-shadow: 0 2px 6px rgba(0,0,0,0.45);
+
+    opacity: 0.95;
+    pointer-events: none;
+}
+@media (max-width: 768px) {
+    .click-text {
+        bottom: 6%;   /* lo baja más en móvil */
+        font-size: 0.95rem;
+        letter-spacing: 0.14em;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Reproductor de Audio (Oculto) -->
+    <audio id="wedding-music" loop>
+        <!-- 
+            *** INSTRUCCIONES PARA PONER TU CANCIÓN ***
+            1. Sube tu archivo .mp3 o .wav a un servicio de hosting/nube que proporcione un enlace público DIRECTO.
+            2. REEMPLAZA LA URL A CONTINUACIÓN con la dirección pública directa de tu archivo MP3.
+            3. NOTA: Los enlaces de YouTube NO funcionarán aquí.
+        -->
+        <source src="musica/cancion.mp3" type="audio/mp3">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- 1. MURO DE ACCESO (SPLASH GATE) -->
+    <div id="splash-gate" onclick="handleGateClick()">
+
+    <picture>
+    <!-- Imagen SOLO para PC -->
+    <source media="(min-width: 1024px)" srcset="fotos/sobre1.jpg">
+
+    <!-- Imagen por defecto (móvil y tablet) -->
+    <img 
+        src="fotos/sobre.jpg"
+        class="fullscreen-envelope"
+        alt="Sobre de invitación">
+</picture>
+<p class="click-text">Click aquí</p>
+
+
+    <p id="guest-count"
+       class="font-serif-elegant italic font-light">
+    </p>
+
+</div>
+
+<!-- HERO FIJO DE FONDO -->
+<section id="hero-section">
+    <div id="hero-overlay"></div>
+<div class="hero-names">
+    <span class="name-top">Laura</span>
+    <span class="amp">&</span>
+    <span class="name-bottom">Julián</span>
+</div>
+
+
+
+    <div class="hero-floating">
+        <p class="font-serif-elegant italic tracking-widest mb-4">
+            21 . 06 . 26
+        </p>
+        <div id="countdown" class="flex justify-center space-x-3"></div>
+    </div>
+</section>
+
+
+    <!-- 2. CONTENIDO PRINCIPAL (Inicialmente oculto) -->
+    <main id="main-content"
+      class="relative z-10 opacity-0 transition-opacity duration-1000"
+      style="margin-top: 100svh;">
+
+
+        
+
+        <!-- SECCIÓN DE MENSAJE ELEGANCE -->
+        <section class="pt-8 pb-10 px-4 md:pt-12 md:pb-14 md:px-8 vintage-paper-bg">
+            <div class="max-w-[620px] mx-auto text-center animate-on-scroll">
+
+
+
+ <!-- FRASE DESTACADA -->
+    <p class="font-serif-elegant text-[26px] md:text-[30px] italic mb-4 max-w-[520px] mx-auto leading-snug"
+          style="color: var(--color-midnight);">
+        ¡Nuestro amor llega al altar!
+    </p>
+
+    <!-- MENSAJE -->
+  <p class="font-serif-elegant text-[17px] md:text-[18px] max-w-[560px] mx-auto text-center leading-relaxed px-4 mt-2"
+   style="color: var(--color-midnight);">
+
+        Queremos de todo corazón que nos acompañes a celebrar este día tan especial,
+        para agradecer a Dios, junto a ustedes, el amor que nos une y nos sostiene.
+    </p>
+
+<!-- LÍNEA DECORATIVA -->
+<div class="flex justify-center my-6 animate-fade-up">
+  <span class="block w-16 h-px bg-[var(--color-midnight)] opacity-30"></span>
+</div>
+
+    <!-- CITA + REFERENCIA -->
+<p class="font-serif-elegant text-[14px] md:text-[15px] mt-6 text-center leading-relaxed px-6 italic"
+   style="color: var(--color-midnight); opacity: 0.8;">
+    “El fuego del amor es una llama que Dios mismo ha encendido.  
+    No hay mares que puedan apagarlo,  
+    ni ríos que puedan extinguirlo.”
+
+    <span class="block text-[13px] md:text-[14px] mt-2 leading-tight not-italic opacity-90">
+        Cantares 8:6–7
+    </span>
+</p>
+   
+</div>
+
+        </section>
+
+       <!-- SECCIÓN GALERÍA -->
+<section class="collage-magic">
+  <div class="magic-grid" id="magic-grid">
+
+    <div class="magic-card">
+      <img src="fotos/Collage1.jpeg" class="img-front" loading="lazy" alt="Foto 1">
+      <img src="fotos/Amplia1.jpeg" class="img-back" loading="lazy" alt="">
+    </div>
+
+    <div class="magic-card">
+      <img src="fotos/Collage2.jpeg" class="img-front" loading="lazy" alt="Foto 2">
+      <img src="fotos/Amplia2.jpeg" class="img-back" loading="lazy" alt="">
+    </div>
+
+    <div class="magic-card">
+      <img src="fotos/Collage3.jpeg" class="img-front" loading="lazy" alt="Foto 3">
+      <img src="fotos/Amplia3.jpeg" class="img-back" loading="lazy" alt="">
+    </div>
+
+    <div class="magic-card">
+      <img src="fotos/Collage4.jpeg" class="img-front" loading="lazy" alt="Foto 4">
+      <img src="fotos/Amplia4.jpeg" class="img-back" loading="lazy" alt="">
+    </div>
+
+    <div class="magic-card">
+      <img src="fotos/Collage5.jpeg" class="img-front" loading="lazy" alt="Foto 5">
+      <img src="fotos/Amplia5.jpeg" class="img-back" loading="lazy" alt="">
+    </div>
+
+    <div class="magic-card">
+      <img src="fotos/Collage6.jpeg" class="img-front" loading="lazy" alt="Foto 6">
+      <img src="fotos/Amplia6.jpeg" class="img-back" loading="lazy" alt="">
+    </div>
+
+  </div>
+</section>
+
+
+
+</div>
+
+
+
+
+            </div>
+        </section>
+<!-- SECCIÓN UBICACIÓN (MOVIDA Y DEDICADA) -->
+        <section class="py-16 px-4 md:py-24" style="background-color: var(--color-midnight);">
+
+    <div class="max-w-5xl mx-auto">
+
+        <h2 class="text-center cursive text-5xl md:text-6xl mb-8 md:mb-10"
+    style="color: var(--color-cinnamon);">
+    Detalles del Día
+</h2>
+
+
+        <div class="location-grid">
+
+            <!-- MAPA -->
+            <div>
+<p class="lugar-elegante">
+    Hacienda Pilares del Rosal
+</p>
+
+                <div class="mini-map-wrapper">
+                    <a 
+                        href="https://www.google.com/maps/search/?api=1&query=4.866314816422543,-74.23546923834049"
+                        target="_blank"
+                    >
+                        <iframe
+                            src="https://www.google.com/maps?q=4.866314816422543,-74.23546923834049&z=15&output=embed"
+                            loading="lazy">
+                        </iframe>
+
+                        <div class="map-overlay">
+                            <span>Ver ubicación</span>
+                        </div>
+                    </a>
+                </div>
+
+                <p class="font-sans-subtle text-sm opacity-80 text-center mt-2"
+                   style="color: var(--color-midnight);">
+                    Hacienda Pilares del Rosal<br>
+                    Kilómetro 3 vía El Rosal – Subachoque
+                </p>
+<!-- BOTONES -->
+        <div class="map-buttons">
+
+            <a 
+                href="https://www.google.com/maps/search/?api=1&query=4.866314816422543,-74.23546923834049"
+                target="_blank"
+                class="font-sans-subtle py-3 px-10 rounded-full font-semibold shadow-lg transition hover:scale-[1.03]"
+                style="background-color: var(--color-cinnamon); color: var(--color-midnight);">
+                Ver en Google Maps
+            </a>
+
+            <a 
+                href="https://waze.com/ul?ll=4.866314816422543,-74.23546923834049"
+                target="_blank"
+                class="font-sans-subtle py-3 px-10 rounded-full text-sm font-semibold transition hover:opacity-90"
+                style="border: 1px solid var(--color-cinnamon); color: var(--color-cinnamon);">
+                Abrir en Waze
+            </a>
+        </div>
+            </div>
+
+            <!-- FECHA Y HORA -->
+            <div class="date-time-box animate-on-scroll">
+
+                <p class="event-day">Domingo</p>
+                <p class="event-date">21 de Junio</p>
+                <div class="divider"></div>
+                <p class="event-time">2:00 pm</p>
+            </div>
+
+        </div>
+
+        
+
+    </div>
+</section>
+<!-- SECCIÓN VIDEO -->
+<section class="py-3 md:py-8 px-3 md:px-8 vintage-paper-bg">
+
+  <div class="max-w-[1100px] mx-auto animate-on-scroll">
+
+    <!-- CONTENEDOR VIDEO -->
+    <div class="relative overflow-hidden rounded-sm shadow-xl border border-black/10 bg-white">
+
+     
+        <video
+  class="w-full h-[35vh] md:h-[75vh] block object-cover video-on-scroll"
+  muted
+  loop
+  playsinline
+  preload="none">
+
+        <source src="video/videom.mp4">
+        Tu navegador no soporta la reproducción de video.
+      </video>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- SECCIÓN CODIGO DE VESTIMENTA -->
+        <section class="py-16 px-4 bg-[#1e2537] text-white">
+  <div class="max-w-3xl mx-auto text-center space-y-12">
+
+    <header class="space-y-4">
+      <h2 class="text-center cursive text-5xl md:text-6xl mb-2">
+    Código de Vestimenta
+</h2>
+      <p class="formal-subtitle">FORMAL</p>
+    </header>
+
+    <div class="flex flex-row justify-center items-start gap-6 md:gap-12 flex-nowrap">
+
+
+      <!-- Mujer -->
+      <div class="flex flex-col items-center">
+        <div class="sketch-card">
+          <div class="slideshow-container" id="slides-woman">
+            <div class="slide active">
+              <img src="Fotos/vestido.png">
+            </div>
+            <div class="slide">
+              <img src="Fotos/sastre.png">
+            </div>
+          </div>
+          <p class="fashion-label">Vestido largo o sastre</p>
+        </div>
+      </div>
+
+      <!-- Hombre -->
+      <div class="flex flex-col items-center">
+        <div class="sketch-card">
+          <div class="slideshow-container" id="slides-man">
+            <div class="slide active">
+              <img src="Fotos/moño.png">
+            </div>
+            <div class="slide">
+              <img src="Fotos/corbata.png">
+            </div>
+          </div>
+          <p class="fashion-label">Traje</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="space-y-6">
+      <p class="text-[0.7rem] uppercase tracking-[0.2em] opacity-80">
+        Nos reservamos el color blanco y crema
+      </p>
+
+      <div class="flex items-center justify-center gap-10">
+        <div class="color-circles-overlap">
+          <div class="circle circle-white"></div>
+          <div class="circle circle-offwhite"></div>
+        </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+        
+
+        <!-- SECCIÓN CONFIRMACIÓN DE ASISTENCIA (RSVP) -->
+        <section id="rsvp-section" class="py-16 px-4 md:py-24 vintage-paper-bg">
+
+            <div class="max-w-2xl mx-auto p-6 md:p-10 rounded-xl shadow-none" style="background-color: var(--color-beige);">
+                <h2 class="text-center cursive text-5xl md:text-6xl mb-2"
+    style="color: var(--color-cinnamon);">
+    Confirmación
+</h2>
+
+<p class="text-center cinzel text-xs mb-8"
+   style="color: var(--color-midnight); opacity: 0.7;">
+    Responde antes del 01 de Junio
+</p>
+
+                <form id="rsvp-form" class="space-y-6">
+                    <!-- Invitados de la familia -->
+<div>
+    <label class="block text-sm font-sans-subtle font-medium mb-2" style="color: var(--color-midnight);">
+        Confirma quién asistirá:
+    </label>
+
+    <button 
+        type="button"
+        id="toggle-guests"
+        class="w-full text-left px-4 py-3 border rounded-lg bg-white hover:bg-gray-50 transition font-semibold"
+        style="border-color: var(--color-denim); color: var(--color-midnight);">
+        Selecciona los invitados ▾
+    </button>
+
+    <div id="lista-invitados" class="space-y-2 mt-3 hidden"></div>
+</div>
+
+
+
+                    <!-- Vehículo -->
+                    <div>
+                        <label for="vehicle" class="block text-sm font-sans-subtle font-medium mb-2" style="color: var(--color-midnight);">
+                            ¿Posees vehículo? (Placas)
+                        </label>
+                        <input type="text" id="vehicle" name="vehicle" placeholder="Ej: ABC 123 (opcional)"
+                               class="w-full p-3 border rounded-lg transition duration-300 focus:ring-1"
+                               style="border-color: var(--color-denim); color: var(--color-midnight); font-family: 'Inter', sans-serif;">
+                    </div>
+
+                    <!-- Alergias -->
+                    <div>
+                        <label for="allergies" class="block text-sm font-sans-subtle font-medium mb-2" style="color: var(--color-midnight);">
+                            ¿Eres alérgico a algún alimento? (Especificar)
+                        </label>
+                        <textarea id="allergies" name="allergies" rows="3" placeholder="Ej: Alergia a frutos secos (opcional)"
+                                  class="w-full p-3 border rounded-lg transition duration-300 focus:ring-1"
+                                  style="border-color: var(--color-denim); color: var(--color-midnight); font-family: 'Inter', sans-serif;"></textarea>
+                    </div>
+
+                    <div id="form-message" class="text-center text-sm font-sans-subtle hidden p-3 rounded-lg" style="background-color: var(--color-denim); color: var(--color-midnight);"></div>
+
+                    <button type="submit" class="w-full py-3 rounded-full font-semibold transition duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                            style="background-color: var(--color-cinnamon); color: var(--color-midnight); font-family: 'Cinzel', serif;">
+                        CONFIRMAR
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- BOTÓN WHATSAPP FLOTANTE -->
+<div id="wa-container">
+    <button id="wa-button">
+        <i class="fab fa-whatsapp"></i>
+    </button>
+
+    <div id="wa-menu">
+        <a href="https://wa.me/573136853736?text=Hola Julían,%20tengo%20una%20duda" target="_blank">
+            Contactar a Julián
+        </a>
+        <a href="https://wa.me/573108144314?text=Hola Laura,%20tengo%20una%20duda" target="_blank">
+            Contactar a Laura
+        </a>
+    </div>
+</div>
+<!-- SECCIÓN MENSAJE FINAL -->
+<footer class="footer-final text-center vintage-paper-bg">
+
+    <div class="footer-content">
+
+        <div class="mini-envelope">
+            <div class="flap"></div>
+            <div class="seal"></div>
+        </div>
+
+        <p class="lluvia-title">
+            Lluvia de sobres
+        </p>
+
+        <p class="footer-text">
+            Agradecemos su confirmación y puntualidad para vivir juntos cada instante de este día tan especial.
+        </p>
+    </div>
+
+</footer>
+
+
+
+
+    </main>
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+    <img id="lightbox-img" src="" alt="Imagen ampliada">
+</div>
+
+    <script>
+        const WEDDING_DATE = new Date("2026-06-21T00:00:00").getTime();
+        const countdownElement = document.getElementById('countdown');
+        const splashGate = document.getElementById('splash-gate');
+        const mainContent = document.getElementById('main-content');
+        const guestCountText = document.getElementById('guest-count');
+        const weddingMusic = document.getElementById('wedding-music');
+
+// 🔹 CONFIGURACIÓN DE INVITADOS POR CÓDIGO
+const invitados = {
+    "A1": {
+        cantidad: 3,
+        nombres: ["Germán Gutiérrez", "Alicia Rodríguez","Michael Gutiérrez"]
+    },
+    "B2": {
+        cantidad: 3,
+        nombres: ["Diego Ochoa", "Luz Mery Bolívar", "Gabriela Ochoa"]
+    },
+    "C3": {
+        cantidad: 1,
+        nombres: ["Isaac Gutiérrez"]
+    },
+    "D4": {
+        cantidad: 2,
+        nombres: ["Leonardo Ochoa","Alison Yusty"]
+    },
+    "E5": {
+        cantidad: 1,
+        nombres: ["Gladys Castañeda"]
+    },
+    "F6": {
+        cantidad: 2,
+        nombres: ["Wendy Gutiérrez", "Antonella Gutiérrez"]
+    },
+    "G7": {
+        cantidad: 3,
+        nombres: ["Giovanny Gutiérrez","Laudy Prieto","Juanita Prieto"]
+    },
+    "H8": {
+        cantidad: 3,
+        nombres: ["Oscar Gutiérrez","Yuli Valderrama","Saray Gutiérrez"]
+    },
+    "I9": {
+        cantidad: 2,
+        nombres: ["Diana Rodríguez", "Sharon Sánchez"]
+    },
+    "J10": {
+        cantidad: 2,
+        nombres: ["Juan Pablo Romero", "Emilse Rodríguez"]
+    },
+    "K11": {
+        cantidad: 2,
+        nombres: ["Deivid Romero", "Juliana Aguacia"]
+    },
+    "L12": {
+        cantidad: 2,
+        nombres: ["Narciso Rodríguez","Lucía Gámez"]
+    },
+    "M13": {
+        cantidad: 1,
+        nombres: ["Cindy Rodríguez"]
+    },
+    "N14": {
+        cantidad: 3,
+        nombres: ["Ferney Rodríguez", "Karina Sánchez","Juanes Rodríguez"]
+    },
+    "O15": {
+        cantidad: 2,
+        nombres: ["Leonardo Gutiérrez","Martha Espitia"]
+    },
+    "P16": {
+        cantidad: 2,
+        nombres: ["Marco Gutiérrez","Amparo Rodríguez"]
+    },
+    "Q17": {
+        cantidad: 5,
+        nombres: ["Iván Sánchez", "Katerin Gutiérrez","Dilan Sánchez","Tomás Sánchez","Isabella Sánchez"]
+    },
+    "R18": {
+        cantidad: 1,
+        nombres: ["Alejandra Gutiérrez"]
+    },
+    "S19": {
+        cantidad: 2,
+        nombres: ["Patricia Ochoa","Harold Morales"]
+    },
+    "T20": {
+        cantidad: 2,
+        nombres: ["Fidel Bolívar","Flor Vargas"]
+    },
+    "U21": {
+        cantidad: 2,
+        nombres: ["Victor Bolívar","Ligia Galindo"]
+    },
+    "V22": {
+        cantidad: 2,
+        nombres: ["Esther Bolívar", "Nataly Rivera"]
+    },
+    "W23": {
+        cantidad: 5,
+        nombres: ["Lucila Bolívar","Carlos Pinzón","Luisa Pinzón","Camilo Pinzón","Manuel Pinzón"]
+    },
+    "X24": {
+        cantidad: 3,
+        nombres: ["Marlen Bolívar","Juan Carlos Criollo","Felipe Criollo"]
+    },
+    "Y25": {
+        cantidad: 2,
+        nombres: ["Esteban Poveda", "Angie Rojas"]
+    },
+    "Z26": {
+        cantidad: 2,
+        nombres: ["Sergio Rivera", "Laura"]
+    },
+    "A27": {
+        cantidad: 4,
+        nombres: ["Mercedes Bolívar", "Daniela Rivera","Santiago Rivera","Isabella Bolívar"]
+    },
+    "B28": {
+        cantidad: 5,
+        nombres: ["Alejandro Gamez","Claudia Toro","Emmanuel Gamez","Samuel Gamez","Isabella Gamez"]
+    },
+    "C29": {
+        cantidad: 2,
+        nombres: ["José Gamez", "Inés Galvis"]
+    },
+    "D30": {
+        cantidad: 3,
+        nombres: ["Andrés Baquero", "Mabel Gamez","David Baquero"]
+    },
+    "E31": {
+        cantidad: 1,
+        nombres: ["Viviana Merchán"]
+    },
+    "F32": {
+        cantidad: 2,
+        nombres: ["Brayan Gamez","Julieth Vargas"]
+   },
+   "G33": {
+        cantidad: 2,
+        nombres: ["Emiliano Galvis","Estela Gamez"]
+   },
+   "H34": {
+        cantidad: 1,
+        nombres: ["Diber Castañeda"]
+   },
+   "I35": {
+        cantidad: 1,
+        nombres: ["Diana Jiménez"]
+  },
+  "J36": {
+        cantidad: 3,
+        nombres: ["Hermosa Ochoa","Pequitas Bonitas","Amor Linda"]
+  },
+  "K37": {
+        cantidad: 1,
+        nombres: ["Natalia Rodríguez"]
+  
+  },
+  "L38": {
+        cantidad: 2,
+        nombres: ["John merchan","Karolayn Ortiz"]
+  }
+
+};
+
+
+function obtenerCodigoInvitado() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("rsvp");
+}
+
+function obtenerCantidadInvitados() {
+    const codigo = obtenerCodigoInvitado();
+    if (codigo && invitados[codigo]) {
+        return invitados[codigo].cantidad;
+    }
+    return 1;
+}
+
+
+let guestAmount = obtenerCantidadInvitados();
+
+// Mostrar texto desde el inicio (antes del click)
+guestCountText.innerHTML = `
+    Invitación para 
+    <span class="gold-stamp">${guestAmount} ${guestAmount === 1 ? "persona" : "personas"}</span>
+`;
+guestCountText.style.opacity = '1';
+
+
+
+        
+
+        // --- 1. LÓGICA DE LA PUERTA (SPLASH GATE) ---
+let opened = false;
+
+function handleGateClick() {
+    if (opened) return;
+    opened = true;
+
+    // Vibración móvil
+    if (navigator.vibrate) {
+        navigator.vibrate([40, 20, 40]);
+    }
+
+    // Texto visible y elegante
+   guestCountText.innerHTML = `
+    Invitación para 
+    <span class="gold-stamp">${guestAmount} ${guestAmount === 1 ? "persona" : "personas"}</span>
+`;
+
+    guestCountText.style.opacity = '1';
+    guestCountText.style.transform = 'translateX(-50%)';
+
+    // Esperar un poco antes de abrir
+    setTimeout(() => {
+        splashGate.style.opacity = '0';
+        mainContent.style.opacity = '1';
+
+        weddingMusic.volume = 0.9;
+        weddingMusic.play().catch(() => {});
+
+        startCountdown();
+
+        setTimeout(() => {
+            splashGate.style.display = 'none';
+        }, 1000);
+    }, 900);
+}
+
+
+
+        // --- 2. CUENTA REGRESIVA ---
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = WEDDING_DATE - now;
+
+            // Cálculos de tiempo
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                countdownElement.innerHTML = '<span class="font-serif-elegant text-xl md:text-2xl text-white">¡Ya es el gran día!</span>';
+                return;
+            }
+
+            // Recuadros de la cuenta regresiva más pequeños
+            const formatUnit = (value, unit) => `
+                <div class="text-center p-1 rounded-lg shadow-md w-10 md:w-12" style="background-color: var(--color-cinnamon); color: var(--color-midnight);">
+                    <div class="font-sans-subtle text-sm md:text-lg font-bold">${value}</div>
+                    <div class="font-sans-subtle text-xs uppercase">${unit}</div>
+                </div>
+            `;
+
+            countdownElement.innerHTML =
+                formatUnit(days, 'Días') +
+                formatUnit(hours, 'Hrs') +
+                formatUnit(minutes, 'Mins') +
+                formatUnit(seconds, 'Segs');
+        }
+
+        let countdownInterval;
+        function startCountdown() {
+            updateCountdown(); // Ejecuta una vez inmediatamente
+            countdownInterval = setInterval(updateCountdown, 1000);
+        }
+
+        // --- 3. CARRUSEL DE CÓDIGO DE VESTIMENTA ---
+        const menImages = [
+            'https://placehold.co/240x240/1D2B40/E0E0DF?text=Inspiración+Hombres+1',
+            'https://placehold.co/240x240/1D2B40/7F9AB2?text=Inspiración+Hombres+2',
+            'https://placehold.co/240x240/1D2B40/B18F64?text=Inspiración+Hombres+3'
+        ];
+        const womenImages = [
+            'Fotos/Mujer-verde.png',
+            'Fotos/Mujer-Salmon.png'
+        ];
+
+        let menIndex = 0;
+        let womenIndex = 0;
+
+        function changeDressCodeImage(gender, direction) {
+            const imageElement = document.getElementById(`${gender}-image`);
+            let images, currentIndex;
+
+            if (gender === 'men') {
+                images = menImages;
+                currentIndex = menIndex;
+            } else {
+                images = womenImages;
+                currentIndex = womenIndex;
+            }
+
+            // Calcular nuevo índice
+            currentIndex = (currentIndex + direction + images.length) % images.length;
+
+            // Actualizar el índice y la imagen
+            imageElement.style.opacity = '0'; // Efecto de fade out
+
+            setTimeout(() => {
+                imageElement.src = images[currentIndex];
+                imageElement.style.opacity = '1'; // Efecto de fade in
+                if (gender === 'men') {
+                    menIndex = currentIndex;
+                } else {
+                    womenIndex = currentIndex;
+                }
+            }, 300); // Espera 300ms para el fade
+        }
+function mostrarInvitadosEnFormulario() {
+    const codigo = obtenerCodigoInvitado();
+    const contenedor = document.getElementById("lista-invitados");
+
+    if (!contenedor) return;
+
+    if (!codigo || !invitados[codigo]) {
+        contenedor.innerHTML = "<p>Invitación individual</p>";
+        return;
+    }
+
+    const lista = invitados[codigo].nombres;
+    contenedor.innerHTML = "";
+
+    lista.forEach(nombre => {
+        const label = document.createElement("label");
+        label.className = "flex items-center gap-2";
+
+        label.innerHTML = `
+            <input type="checkbox" name="asistentes" value="${nombre}">
+            ${nombre}
+        `;
+
+        contenedor.appendChild(label);
+    });
+}
+
+window.addEventListener("load", mostrarInvitadosEnFormulario);
+
+        // --- 4. FORMULARIO RSVP (ENVÍO REAL A GOOGLE SHEETS) ---
+document.getElementById('rsvp-form').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    
+    const asistentes = [
+        ...document.querySelectorAll('input[name="asistentes"]:checked')
+    ].map(el => el.value);
+
+    const vehicle = document.getElementById('vehicle').value;
+    const allergies = document.getElementById('allergies').value;
+    const messageBox = document.getElementById('form-message');
+
+    if (asistentes.length === 0) {
+        messageBox.textContent = 'Por favor, selecciona tu nombre para confirmar la asistencia.';
+        messageBox.classList.remove('hidden');
+        messageBox.style.backgroundColor = 'red';
+        messageBox.style.color = 'white';
+        return;
+    }
+
+    try {
+        await fetch("https://script.google.com/macros/s/AKfycby5igzmRhwlKqJCYz8gjTWEaTRw0VFcVF3oxOTruR9CwsJrcxJNy4fGLMxDNIQi8Lr4gA/exec", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        guest: asistentes.join(", "),
+        vehicle: vehicle,
+        allergies: allergies
+    })
+});
+
+
+        messageBox.textContent = `¡Gracias por confirmar la asistencia de: ${asistentes.join(", ")}!`;
+        messageBox.classList.remove('hidden');
+        messageBox.style.backgroundColor = 'var(--color-cinnamon)';
+        messageBox.style.color = 'var(--color-midnight)';
+
+        this.querySelector('button').disabled = true;
+        this.querySelector('button').textContent = 'ASISTENCIA CONFIRMADA';
+
+    } catch (error) {
+        messageBox.textContent = 'Error al enviar el formulario. Intenta nuevamente.';
+        messageBox.classList.remove('hidden');
+        messageBox.style.backgroundColor = 'red';
+        messageBox.style.color = 'white';
+    }
+});
+
+
+        // --- 5. LÓGICA DE VIDEO (PANTALLA COMPLETA) ---
+        function toggleFullscreen(element) {
+            // Esta función maneja la solicitud de pantalla completa en navegadores modernos.
+            if (element.requestFullscreen) {
+                element.requestFullscreen();
+            } else if (element.mozRequestFullScreen) { /* Firefox */
+                element.mozRequestFullScreen();
+            } else if (element.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                element.webkitRequestFullscreen();
+            } else if (element.msRequestFullscreen) { /* IE/Edge */
+                element.msRequestFullscreen();
+            }
+        }
+
+    </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const observer = new IntersectionObserver(
+        entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target); // solo una vez
+                }
+            });
+        },
+        { threshold: 0.35 }
+    );
+
+    document.querySelectorAll(".animate-on-scroll").forEach(el => {
+        observer.observe(el);
+    });
+});
+</script>
+<script>
+const videoObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      const video = entry.target;
+
+     if (entry.isIntersecting) {
+  video.classList.add('visible');
+  video.currentTime = 0;
+  video.play().catch(() => {});
+} else {
+  video.pause();
+}
+
+
+    });
+  },
+  {
+    threshold: 0.5 // se reproduce cuando el 50% es visible
+  }
+);
+
+document.querySelectorAll('.video-on-scroll').forEach(video => {
+  videoObserver.observe(video);
+});
+</script>
+<script>
+  function iniciarSlideshow(id, intervalo = 3500) {
+    const slides = document.querySelectorAll(`#${id} .slide`);
+    let index = 0;
+
+    if (slides.length <= 1) return;
+
+    setInterval(() => {
+      slides[index].classList.remove('active');
+      index = (index + 1) % slides.length;
+      slides[index].classList.add('active');
+    }, intervalo);
+  }
+
+  // Mujer
+  iniciarSlideshow('slides-woman', 3600);
+
+  // Hombre (ligeramente distinto para que no cambien al mismo tiempo)
+  iniciarSlideshow('slides-man', 4200);
+</script>
+<script>
+// --- DESPLEGAR LISTA DE INVITADOS ---
+document.addEventListener("DOMContentLoaded", function () {
+    const toggleBtn = document.getElementById('toggle-guests');
+    const guestList = document.getElementById('lista-invitados');
+
+    if (!toggleBtn || !guestList) return;
+
+    toggleBtn.addEventListener('click', () => {
+        guestList.classList.toggle('hidden');
+
+        if (guestList.classList.contains('hidden')) {
+            toggleBtn.textContent = "Selecciona los invitados ▾";
+        } else {
+            toggleBtn.textContent = "Selecciona los invitados ▴";
+        }
+    });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const cards = document.querySelectorAll('.magic-card');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    let activeCard = null;
+
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+
+            const isActive = card.classList.contains('active');
+            const img = card.querySelector(
+                isActive ? '.img-back' : '.img-front'
+            );
+
+            if (!img) return;
+
+            lightboxImg.src = img.src;
+            lightbox.classList.add('active');
+            activeCard = card;
+        });
+    });
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+
+        if (activeCard) {
+            activeCard.classList.toggle('active'); // 👈 CLAVE
+            activeCard = null;
+        }
+    }
+
+    lightbox.addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeLightbox();
+        }
+    });
+
+});
+
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const waButton = document.getElementById("wa-button");
+    const waMenu = document.getElementById("wa-menu");
+
+    if (!waButton || !waMenu) return;
+
+    waButton.addEventListener("click", () => {
+        waMenu.style.display =
+            waMenu.style.display === "block" ? "none" : "block";
+    });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const waContainer = document.getElementById("wa-container");
+    const rsvpSection = document.getElementById("rsvp-section");
+
+    if (!waContainer || !rsvpSection) return;
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    waContainer.classList.add("visible");
+                } else {
+                    waContainer.classList.remove("visible");
+                }
+            });
+        },
+        {
+            threshold: 0.5 // aparece cuando 50% de la sección es visible
+        }
+    );
+
+    observer.observe(rsvpSection);
+});
+</script>
+
+
+
+
+
+
+
+</body>
+</html>
