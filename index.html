@@ -1564,7 +1564,7 @@ opacity: 0;
     Responde antes del 01 de Junio
 </p>
 
-                 <form id="rsvp-form" action="https://script.google.com/macros/s/AKfycbw347XwfS2KJLAz7_453RTqHauxiv6RZsaQIv4KZAwHZAwK7NW-IFFTnq00c0ztJTT2Og/exec">
+                 <form id="rsvp-form" action="https://script.google.com/macros/s/AKfycbz-cwVbYxbVy_mvpYPUexr1TK3zPtXvwxYM5yVLwGq1qrIO1g1H0r3tcTbGN72BC79J3Q/exec">
 
                     <!-- Invitados de la familia -->
 <div>
@@ -2001,51 +2001,60 @@ function mostrarInvitadosEnFormulario() {
 
 window.addEventListener("load", mostrarInvitadosEnFormulario);
 
-        // --- 4. FORMULARIO RSVP (ENVÍO REAL A GOOGLE SHEETS) ---
-document.getElementById('rsvp-form').addEventListener('submit', async function(event) {
+        // --- 4. FORMULARIO RSVP (VERSIÓN CORREGIDA) ---
+document.getElementById('rsvp-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
     const asistentes = [...document.querySelectorAll('input[name="asistentes"]:checked')].map(el => el.value);
     const vehicle = document.getElementById('vehicle').value;
     const allergies = document.getElementById('allergies').value;
     const messageBox = document.getElementById('form-message');
+    const submitBtn = this.querySelector('button[type="submit"]');
 
     if (asistentes.length === 0) {
-        messageBox.textContent = 'Por favor, selecciona tu nombre para confirmar la asistencia.';
+        messageBox.textContent = 'Por favor, selecciona tu nombre para confirmar.';
         messageBox.classList.remove('hidden');
-        messageBox.style.backgroundColor = 'red';
+        messageBox.style.backgroundColor = '#ff4d4d';
         messageBox.style.color = 'white';
         return;
     }
 
-    try {
-        const formData = new FormData();
-        formData.append("asistentes", asistentes.join(", "));
-        formData.append("vehiculo", vehicle);
-        formData.append("alergias", allergies);
+    // Cambiamos el texto para que el usuario sepa que se está enviando
+    submitBtn.textContent = 'ENVIANDO...';
+    submitBtn.disabled = true;
 
-        const response = await fetch("https://script.google.com/macros/s/AKfycbw347XwfS2KJLAz7_453RTqHauxiv6RZsaQIv4KZAwHZAwK7NW-IFFTnq00c0ztJTT2Og/exec", {
-            method: "POST",
-            body: formData
-        });
+    const scriptURL = "https://script.google.com/macros/s/AKfycbz-cwVbYxbVy_mvpYPUexr1TK3zPtXvwxYM5yVLwGq1qrIO1g1H0r3tcTbGN72BC79J3Q/exec";
 
-        if (!response.ok) throw new Error("Error en la respuesta");
+    // Creamos los datos para enviar
+    const formData = new URLSearchParams();
+    formData.append("asistentes", asistentes.join(", "));
+    formData.append("vehiculo", vehicle);
+    formData.append("alergias", allergies);
 
+    // USAMOS FETCH CON MODO NO-CORS
+    fetch(scriptURL, {
+        method: "POST",
+        mode: "no-cors", // <--- ESTO ES CLAVE
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: formData.toString()
+    })
+    .then(() => {
+        // Con 'no-cors' no podemos leer la respuesta, pero si llega aquí es porque se envió
         messageBox.textContent = `¡Gracias por confirmar la asistencia de: ${asistentes.join(", ")}!`;
         messageBox.classList.remove('hidden');
         messageBox.style.backgroundColor = 'var(--color-cinnamon)';
         messageBox.style.color = 'var(--color-midnight)';
-
-        this.querySelector('button[type="submit"]').disabled = true;
-        this.querySelector('button[type="submit"]').textContent = 'ASISTENCIA CONFIRMADA';
-
-    } catch (error) {
-        console.error(error);
-        messageBox.textContent = 'Error al enviar el formulario. Intenta nuevamente.';
+        submitBtn.textContent = 'ASISTENCIA CONFIRMADA';
+    })
+    .catch(error => {
+        console.error('Error!', error);
+        messageBox.textContent = 'Hubo un problema. Intenta de nuevo.';
         messageBox.classList.remove('hidden');
-        messageBox.style.backgroundColor = 'red';
-        messageBox.style.color = 'white';
-    }
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'CONFIRMAR';
+    });
 });
 
 
@@ -2242,6 +2251,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </body>
 
 </html>
+
 
 
 
