@@ -1564,7 +1564,7 @@ opacity: 0;
     Responde antes del 01 de Junio
 </p>
 
-                 <form id="rsvp-form" action="https://script.google.com/macros/s/AKfycbzqICjSh38gl2vN5MMbPEg2brnPIE0kXZoHMOyWH2NNXTscPH8mpknISEytsqfFUAL1Gw/exec">
+                 <form id="rsvp-form" action="https://script.google.com/macros/s/AKfycbw347XwfS2KJLAz7_453RTqHauxiv6RZsaQIv4KZAwHZAwK7NW-IFFTnq00c0ztJTT2Og/exec">
 
                     <!-- Invitados de la familia -->
 <div>
@@ -1930,32 +1930,7 @@ function handleGateClick() {
             updateCountdown(); // Ejecuta una vez inmediatamente
             countdownInterval = setInterval(updateCountdown, 1000);
         }
-
-        // --- 3. CARRUSEL DE CÓDIGO DE VESTIMENTA ---
-        const menImages = [
-            'https://placehold.co/240x240/1D2B40/E0E0DF?text=Inspiración+Hombres+1',
-            'https://placehold.co/240x240/1D2B40/7F9AB2?text=Inspiración+Hombres+2',
-            'https://placehold.co/240x240/1D2B40/B18F64?text=Inspiración+Hombres+3'
-        ];
-        const womenImages = [
-            'Fotos/Mujer-verde.png',
-            'Fotos/Mujer-Salmon.png'
-        ];
-
-        let menIndex = 0;
-        let womenIndex = 0;
-
-        function changeDressCodeImage(gender, direction) {
-            const imageElement = document.getElementById(`${gender}-image`);
-            let images, currentIndex;
-
-            if (gender === 'men') {
-                images = menImages;
-                currentIndex = menIndex;
-            } else {
-                images = womenImages;
-                currentIndex = womenIndex;
-            }
+        
 
             // Calcular nuevo índice
             currentIndex = (currentIndex + direction + images.length) % images.length;
@@ -2025,7 +2000,7 @@ document.getElementById('rsvp-form').addEventListener('submit', async function(e
         formData.append("vehiculo", vehicle);
         formData.append("alergias", allergies);
 
-        const response = await fetch("https://script.google.com/macros/s/AKfycbzqICjSh38gl2vN5MMbPEg2brnPIE0kXZoHMOyWH2NNXTscPH8mpknISEytsqfFUAL1Gw/exec", {
+        const response = await fetch("https://script.google.com/macros/s/AKfycbw347XwfS2KJLAz7_453RTqHauxiv6RZsaQIv4KZAwHZAwK7NW-IFFTnq00c0ztJTT2Og/exec", {
             method: "POST",
             body: formData
         });
@@ -2243,6 +2218,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </body>
 
 </html>
+
 
 
 
