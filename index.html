@@ -1930,7 +1930,31 @@ function handleGateClick() {
             updateCountdown(); // Ejecuta una vez inmediatamente
             countdownInterval = setInterval(updateCountdown, 1000);
         }
-        
+          // --- 3. CARRUSEL DE CÓDIGO DE VESTIMENTA ---
+        const menImages = [
+            'https://placehold.co/240x240/1D2B40/E0E0DF?text=Inspiración+Hombres+1',
+            'https://placehold.co/240x240/1D2B40/7F9AB2?text=Inspiración+Hombres+2',
+            'https://placehold.co/240x240/1D2B40/B18F64?text=Inspiración+Hombres+3'
+        ];
+        const womenImages = [
+            'Fotos/Mujer-verde.png',
+            'Fotos/Mujer-Salmon.png'
+        ];
+
+        let menIndex = 0;
+        let womenIndex = 0;
+
+        function changeDressCodeImage(gender, direction) {
+            const imageElement = document.getElementById(`${gender}-image`);
+            let images, currentIndex;
+
+            if (gender === 'men') {
+                images = menImages;
+                currentIndex = menIndex;
+            } else {
+                images = womenImages;
+                currentIndex = womenIndex;
+            }
 
             // Calcular nuevo índice
             currentIndex = (currentIndex + direction + images.length) % images.length;
@@ -2218,6 +2242,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </body>
 
 </html>
+
 
 
 
